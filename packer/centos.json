@@ -12,7 +12,7 @@
       "vm_name": "packer-centos-vm",
 
       "boot_wait": "10s",
-      "disk_size": "10240",
+      "disk_size": "30720",
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
 
@@ -69,8 +69,11 @@
         "{{user `image_name`}}" : {
           "scripts" :
             [
-              "scripts/stage-1-kernel-update.sh",
-              "scripts/stage-2-clean.sh"
+              "scripts/stage-1-guestadditions.sh",
+              "scripts/stage-2-guestadditions-2.sh",
+              "scripts/stage-3-kernel-update.sh",
+              "scripts/stage-4-kernel.sh",
+              "scripts/stage-5-clean.sh"
             ]
         }
       }
